@@ -1,0 +1,3 @@
+# Kontribusi dan aturan perubahan
+
+Ikuti [AGENTS.md](../../AGENTS.md). Baca code dan laporan eksperimen terlebih dahulu. Jangan mengubah preprocessing 11 fitur tanpa parity test. Jangan menimpa laporan v1 untuk hasil run lain. Jangan mengunggah dataset 30GB, foto pribadi, file `.env`, `node_modules`, `.venv` ataupun `.joblib` asing. Laporkan tes yang benar-benar dijalankan vs belum dijalankan. Perubahan route/JSON harus kompatibel dengan React. **Pesan commit, jadwal commit dan push ditentukan pemilik repository**, bukan agen AI. Lisensi MIT hanya untuk kode proyek, bukan aset data pihak ketiga.
