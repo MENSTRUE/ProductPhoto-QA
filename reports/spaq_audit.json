@@ -1,0 +1,11 @@
+{
+  "split_parts": 6,
+  "direct_images": 0,
+  "annotation_files": [
+    "SPAQ/Annotations-20250710T143903Z-1-001/Annotations/EXIF_tags.xlsx",
+    "SPAQ/Annotations-20250710T143903Z-1-001/Annotations/MOS and Image attribute scores.xlsx",
+    "SPAQ/Annotations-20250710T143903Z-1-001/Annotations/Scene category labels.xlsx"
+  ],
+  "evaluated": false,
+  "reason": "Different MOS label/domain; this version audits SPAQ separately. Multipart ZIP may require external extraction."
+}

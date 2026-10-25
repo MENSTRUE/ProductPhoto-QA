@@ -1,0 +1,9 @@
+{
+  "champion": "histgb",
+  "test_rows": 1625,
+  "reference_groups": 13,
+  "MAE": 0.7682952859270697,
+  "RMSE": 0.9669035725157733,
+  "R2": 0.1925177073295007,
+  "protocol": "heldout reference groups (KADID synthetic-distortion IQA)"
+}

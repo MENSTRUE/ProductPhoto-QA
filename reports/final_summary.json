@@ -1,0 +1,65 @@
+{
+  "project": "ProductPhoto QA",
+  "day": 18,
+  "heldout": {
+    "champion": "histgb",
+    "test_rows": 1625,
+    "reference_groups": 13,
+    "MAE": 0.7682952859270697,
+    "RMSE": 0.9669035725157733,
+    "R2": 0.1925177073295007,
+    "protocol": "heldout reference groups (KADID synthetic-distortion IQA)"
+  },
+  "selection": [
+    {
+      "model": "histgb",
+      "val_MAE": 0.8192176290273258,
+      "val_RMSE": 1.0387635840416876
+    },
+    {
+      "model": "ridge",
+      "val_MAE": 0.9002776486642889,
+      "val_RMSE": 1.049544888661916
+    },
+    {
+      "model": "dummy",
+      "val_MAE": 0.9342769230769231,
+      "val_RMSE": 1.0712028609142012
+    }
+  ],
+  "split": {
+    "train": {
+      "n": 6875,
+      "groups": 55,
+      "score_mean": 3.0325047272727272
+    },
+    "val": {
+      "n": 1625,
+      "groups": 13,
+      "score_mean": 3.064504615384615
+    },
+    "test": {
+      "n": 1625,
+      "groups": 13,
+      "score_mean": 3.0013046153846155
+    }
+  },
+  "finegrain_smoke_count": 0,
+  "spaq": {
+    "split_parts": 6,
+    "direct_images": 0,
+    "annotation_files": [
+      "SPAQ/Annotations-20250710T143903Z-1-001/Annotations/EXIF_tags.xlsx",
+      "SPAQ/Annotations-20250710T143903Z-1-001/Annotations/MOS and Image attribute scores.xlsx",
+      "SPAQ/Annotations-20250710T143903Z-1-001/Annotations/Scene category labels.xlsx"
+    ],
+    "evaluated": false,
+    "reason": "Different MOS label/domain; this version audits SPAQ separately. Multipart ZIP may require external extraction."
+  },
+  "limitations": [
+    "No verified product-photo pass/fail labels",
+    "KADID not product-domain representative",
+    "SPAQ audit only, no MOS evaluation",
+    "Blur metric is content dependent"
+  ]
+}
