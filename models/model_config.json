@@ -1,0 +1,27 @@
+{
+  "model_file": "kadid_quality_proxy.joblib",
+  "feature_names": [
+    "laplacian_var",
+    "tenengrad",
+    "brightness_mean",
+    "brightness_std",
+    "dark_fraction",
+    "bright_fraction",
+    "contrast_p95_p5",
+    "colorfulness",
+    "entropy",
+    "width",
+    "height"
+  ],
+  "opencv_version": "4.14.0",
+  "policy": {
+    "laplacian_min": 75.0,
+    "brightness_min": 65.0,
+    "brightness_max": 205.0,
+    "dark_fraction_max": 0.48,
+    "bright_fraction_max": 0.48
+  },
+  "quality_score_source": "KADID synthetic distortions, 1\u20135 higher is better",
+  "pass_fail": "uncalibrated policy only",
+  "model_selection": "lowest validation MAE"
+}
