@@ -1,51 +1,39 @@
-# ProductPhoto QA — Frontend
+# ProductPhoto QA — React Frontend
 
-React + TypeScript + Vite interface connected to the actual ProductPhoto QA FastAPI backend. No mocked prediction data.
+> Responsive research interface for actual backend analysis, not a demo that fakes model outputs.
 
-## Run locally (Windows / PowerShell)
+## Features and interaction
 
-From the repository root:
+React 18, TypeScript, Vite; responsive blue-grey dashboard, image picker and drag/drop, previews preserving original aspect ratio, replacement/reset and loading/error flow. GET `/api/v1/health` monitors model/API status; POST `/api/v1/analyze` sends a real multipart FormData `file`; output displays provisional diagnostic flags, KADID quality estimate and measured features, with export of **actual** API JSON. Keep policy and learned estimate separate in presentation.
 
-```powershell
-cd frontend
-npm install
-npm run dev
-```
+## Quick start
 
-Open **http://127.0.0.1:5173**.
-
-Keep the backend running in a second VS Code terminal:
+Run API in one terminal (`backend`):
 
 ```powershell
-cd backend
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
 ```
 
-The backend must run at `http://127.0.0.1:8000`. To override the URL, copy `.env.example` to `.env` and change `VITE_API_BASE_URL` (restart Vite after editing).
+Run UI in another (`frontend`):
 
-## Features
+```powershell
+npm ci
+npm run dev
+```
 
-- Drag/drop or file picker; preview, replace, and reset image
-- Client-side extension and 12MB checks; server-side validation remains authoritative
-- Live `GET /api/v1/health` status and refresh
-- Real `POST /api/v1/analyze` using multipart `FormData`
-- Displays heuristic PASS_PROVISIONAL or REVIEW independent of KADID estimate
-- Sharpness, brightness, contrast, image size, and detailed raw metrics
-- Export the **actual** API response as JSON
-- Mobile responsive layout, basic keyboard accessibility, loading/error states, request cancellation
+Open http://127.0.0.1:5173. The API defaults to http://127.0.0.1:8000; create `frontend/.env` from `.env.example` and set `VITE_API_BASE_URL` if needed, then restart Vite. `.env` must not be committed.
 
-## Important research limitation
-
-This is a diagnostic prototype. The KADID regression score was learned from synthetically distorted images, **not** from seller approval labels. `PASS_PROVISIONAL` is based on *uncalibrated* blur/brightness thresholds and must never be called verified product acceptance.
-
-## Reproducibility
-
-The frontend deliberately does **not** calculate model scores or use demo placeholders. The `quality_estimate` and metrics shown come from the FastAPI backend. If the backend is down or fails, users see an error. API CORS in the current backend permits `http://localhost:5173` and `http://127.0.0.1:5173`.
-
-## Build
+## Build and checks
 
 ```powershell
 npm run build
+npm run preview
 ```
 
-Note: Do not commit `node_modules`, `dist`, or local `.env` files. Git commit naming and timing remain the repository owner's choice.
+`npm run build` runs **TypeScript validation and Vite production bundling**. This document does **not** claim build completed successfully until the actual local output is available. Test desktop/mobile, keyboard access, photo square/portrait/landscape (not stretched or cropped), API-down states, invalid files, upload size, JSON export and consistency with Swagger.
+
+## User-facing claim boundaries
+
+Do not label `PASS_PROVISIONAL` as “Approved” or render KADID score as a marketplace pass probability, AI confidence or pass-fail classification metric. Backend still requires product-domain human labels for that.
+
+Read [main README](../README.md), [architecture](../docs/en/ARCHITECTURE.md), [claim policy](../docs/en/CLAIMS.md), [API contract](../docs/en/API.md), [troubleshooting](../docs/en/TROUBLESHOOTING.md).
